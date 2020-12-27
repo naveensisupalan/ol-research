@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!--HTTP server plugin config file for defaultServer generated on 2020.12.27 at 16:45:07 MST-->
+<Config ASDisableNagle="false" AcceptAllContent="false" AppServerPortPreference="HostHeader" ChunkedResponse="false" ConfigHash="446955328" FIPSEnable="false" IISDisableNagle="false" IISPluginPriority="High" IgnoreDNSFailures="false" RefreshInterval="60" ResponseChunkSize="64" SSLConsolidate="false" TrustedProxyEnable="false" VHostMatchingCompat="false">
+       
+    <Log LogLevel="Error" Name="/opt/IBM/WebSphere/Plugins/logs/webserver1/http_plugin.log"/>
+       
+    <Property Name="ESIEnable" Value="true"/>
+       
+    <Property Name="ESIMaxCacheSize" Value="1024"/>
+       
+    <Property Name="ESIInvalidationMonitor" Value="false"/>
+       
+    <Property Name="ESIEnableToPassCookies" Value="false"/>
+       
+    <Property Name="PluginInstallRoot" Value="/opt/IBM/WebSphere/Plugins"/>
+    <!-- No endpoint could be found with pid com.ibm.ws.http_4.-->
+    <!-- The default_host contained only aliases for endpoint defaultHttpEndpoint.
+	 The generated VirtualHostGroup will contain only configured web server ports:
+		webserverPort=80
+		webserverSecurePort=443 -->
+       
+    <VirtualHostGroup Name="default_host">
+              
+        <VirtualHost Name="*:80"/>
+              
+        <VirtualHost Name="*:443"/>
+           
+    </VirtualHostGroup>
+    <!-- The configured endpoint could not be found. httpEndpointRef=defaultHttpEndpoint-->
+       
+    <UriGroup Name="default_host_defaultServer_default_node_Cluster_URIs">
+              
+        <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/${app.context.root}/*"/>
+           
+    </UriGroup>
+       
+    <Route ServerCluster="defaultServer_default_node_Cluster" UriGroup="default_host_defaultServer_default_node_Cluster_URIs" VirtualHostGroup="default_host"/>
+    
+</Config>
