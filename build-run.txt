@@ -1,2 +1,4 @@
 bh bud -t olresearch:1.0-SNAPSHOT .
-podman run -d --name olresearch -p 9080:9080 olresearch:1.0-SNAPSHOT
+podman push olresearch:1.1-SNAPSHOT javarebel/olresearch:latest
+podman run -d --name olresearch -p 9080:9080 olresearch:1.1-SNAPSHOT
+
