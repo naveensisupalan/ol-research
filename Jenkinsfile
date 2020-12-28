@@ -3,8 +3,8 @@ pipeline {
         label 'hp-ubuntu'
     }
     environment {
-      projectName: 'olresearch'
-      registry: 'javarebel'
+      projectName = 'olresearch'
+      registry = 'javarebel'
     }
     stages {
         stage('build') {
