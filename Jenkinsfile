@@ -10,7 +10,7 @@ pipeline {
         }
         stage('build-image') {
             steps {
-                sh 'bh bud -t olresearch:1.0-SNAPSHOT .'
+                sh 'buildah bud -t olresearch:1.0-SNAPSHOT .'
             }
         }
     }
