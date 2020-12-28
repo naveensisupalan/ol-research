@@ -11,10 +11,10 @@ LABEL \
   org.opencontainers.image.version="$VERSION" \
   org.opencontainers.image.revision="$REVISION" \
   vendor="Open Liberty" \
-  name="system" \
+  name="rest" \
   version="$VERSION-$REVISION" \
   summary="The system rest microservice from the Deploying microservices to OpenShift guide" \
-  description="This image contains the system microservice running with the Open Liberty runtime."
+  description="This image contains the rest microservice running with the Open Liberty runtime."
 
 COPY --chown=1001:0 src/main/liberty/config /config/
 COPY --chown=1001:0 target/rest.war /config/apps
