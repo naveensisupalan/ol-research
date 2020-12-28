@@ -2,6 +2,10 @@ pipeline {
     agent {
         label 'hp-ubuntu'
     }
+    environment {
+      projectName: 'olresearch'
+      registry: 'javarebel'
+    }
     stages {
         stage('build') {
             steps {
@@ -10,12 +14,14 @@ pipeline {
         }
         stage('build-image') {
             steps {
-                sh 'buildah bud -t olresearch:1.1-SNAPSHOT .'
+                sh "buildah bud -t ${env.projectName}:${BUILD_NUMBER} ."
             }
         }
         stage('push-image') {
             steps {
-              sh './jenkins/push.sh'
+              withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'password', usernameVariable: 'username')]) {
+                  sh './jenkins/push.sh'
+              }
             }
         }
     }

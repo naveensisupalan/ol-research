@@ -1,4 +1,5 @@
 #!/bin/bash
-podman login -u javarebel -p sound123
-podman push olresearch:1.1-SNAPSHOT javarebel/olresearch:${BUILD_NUMBER}
-podman push olresearch:1.1-SNAPSHOT javarebel/olresearch:latest
+echo "Pushing image ${projectName}:${BUILD_NUMBER} to registry ${registry}"
+podman login -u $username -p $password
+podman push ${projectName}:${BUILD_NUMBER} ${registry}/${projectName}:${BUILD_NUMBER}
+podman push ${projectName}:${BUILD_NUMBER} ${registry}/${projectName}:latest
