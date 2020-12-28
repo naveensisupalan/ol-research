@@ -8,5 +8,10 @@ pipeline {
                 sh 'mvn -B clean package'
             }
         }
+        stage('build-image') {
+            steps {
+                sh 'bh bud -t olresearch:1.0-SNAPSHOT .'
+            }
+        }
     }
 }
