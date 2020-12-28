@@ -1,5 +1,9 @@
 pipeline {
-    agent { label: "hp-ubuntu" }
+    agent {
+      node: {
+        label: "hp-ubuntu"
+      }
+    }
     stages {
         stage('build') {
             steps {
