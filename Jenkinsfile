@@ -5,6 +5,7 @@ pipeline {
     environment {
       projectName = 'olresearch'
       registry = 'javarebel'
+      DOCKER_HUB_CREDS = credentials('docker-hub')
     }
     stages {
         stage('build') {
@@ -26,9 +27,7 @@ pipeline {
         }
         stage('inspect-image') {
             steps {
-              withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'password', usernameVariable: 'username')]) {
-                sh 'skopeo inspect --creds ${username}:${password} docker://${env.registry}/${env.projectName}:latest'
-              }
+              sh 'skopeo inspect --creds $DOCKER_HUB_CREDS_USR:$DOCKER_HUB_CREDS_PSW docker://${env.registry}/${env.projectName}:latest'
             }
         }
     }
