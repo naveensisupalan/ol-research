@@ -15,7 +15,8 @@ pipeline {
         }
         stage('build-image') {
             steps {
-                sh "buildah bud -t ${env.projectName}:${BUILD_NUMBER} ."
+                // sh "buildah bud -t ${env.projectName}:${BUILD_NUMBER} ."
+                sh "podman build -t ${env.projectName}:${BUILD_NUMBER} ."
             }
         }
         stage('push-image') {
