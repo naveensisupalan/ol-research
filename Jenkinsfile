@@ -27,7 +27,7 @@ pipeline {
         }
         stage('inspect-image') {
             steps {
-              sh 'skopeo inspect --creds $DOCKER_HUB_CREDS_USR:$DOCKER_HUB_CREDS_PSW docker://${env.registry}/${env.projectName}:latest'
+              sh('skopeo inspect --creds $DOCKER_HUB_CREDS_USR:$DOCKER_HUB_CREDS_PSW docker://${env.registry}/${env.projectName}:latest')
             }
         }
     }
