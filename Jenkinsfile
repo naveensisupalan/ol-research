@@ -27,7 +27,7 @@ pipeline {
         stage('inspect-image') {
             steps {
               withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'password', usernameVariable: 'username')]) {
-                sh "skopeo inspect --creds ${username}:${password} docker://${env.registry}/${env.projectName}:latest"
+                sh 'skopeo inspect --creds ${username}:${password} docker://${env.registry}/${env.projectName}:latest'
               }
             }
         }
